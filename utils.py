@@ -1,9 +1,15 @@
+from json import loads
 
-def create_credentials_file():
+def get_credentials():
+    config = '{"ACCESS_KEY": "ACCESS_KEY_AQUI","SECRET_KEY": "SECRET_KEY_AQUI"}'
     try:
-        open('credentials.json', 'r').read()
+        return loads(open('credentials.json', 'r').read())
     except:
-        open('credentials.json', 'w').read()
+        f = open('credentials.json', 'a')
+        f.write(config)
+        f.close()
+        print('Arquivo credentials.json criado, adicione as credenciais da NovaDax')
+        exit()
 
 def verifica_carteira(quantia_carteira, quantia_minima):
     if quantia_carteira > quantia_minima:

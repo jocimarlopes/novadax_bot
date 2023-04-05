@@ -1,9 +1,7 @@
 from novadax import RequestClient as NovaClient
-from json import loads
-from time import sleep
-
+from utils import get_credentials
 def init_novadax():
-    config = loads(open('credentials.json', 'r').read())
+    config = get_credentials()
     client = NovaClient(config['ACCESS_KEY'], config['SECRET_KEY'])
     return client
 
